@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@azure/mcp": "^2.0.0-beta.8",
+    "memory-api-mcp-server": "^1.1.5"
+  }
+}

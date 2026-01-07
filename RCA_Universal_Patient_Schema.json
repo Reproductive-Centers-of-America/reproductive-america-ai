@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Reproductive America Universal Patient Record",
+  "description": "Unified data structure for migration into Microsoft OneLake/Fabric",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "last_sync_utc": { "type": "string", "format": "date-time" },
+        "data_sources": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["nAble", "Airtable", "Webflow", "OneDrive", "Outlook"] }
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "properties": {
+        "patient_id_nable": { "type": "integer" },
+        "patient_id_airtable": { "type": "string" },
+        "account_number_mrn": { "type": "string" },
+        "first_name": { "type": "string" },
+        "last_name": { "type": "string" },
+        "dob": { "type": "string", "format": "date" },
+        "email_primary": { "type": "string" },
+        "phone_cell": { "type": "string" },
+        "preferred_coordinator": { "type": "string", "enum": ["Susana", "Andrea"] }
+      },
+      "required": ["last_name", "email_primary"]
+    },
+    "clinical_status": {
+      "type": "object",
+      "properties": {
+        "category": { "type": "string", "enum": ["Intended Parent", "Egg Donor", "Surrogate", "IVF Patient"] },
+        "current_cycle_id": { "type": "string" },
+        "last_appt_date": { "type": "string", "format": "date" },
+        "next_appt_date": { "type": "string", "format": "date" },
+        "assigned_physician": { "type": "string", "default": "Dr. D" }
+      }
+    },
+    "communication_history": {
+      "type": "object",
+      "properties": {
+        "outlook_thread_ids": { "type": "array", "items": { "type": "string" } },
+        "last_contact_date": { "type": "string", "format": "date-time" },
+        "pending_followup": { "type": "boolean", "default": false },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "third_party_info": {
+      "type": "object",
+      "properties": {
+        "agency_name": { "type": "string" },
+        "legal_counsel": { "type": "string", "default": "Ana Miramontes" },
+        "country_of_origin": { "type": "string" }
+      }
+    },
+    "financial": {
+      "type": "object",
+      "properties": {
+        "balance_due": { "type": "number" },
+        "last_payment_date": { "type": "string", "format": "date" },
+        "insurance_status": { "type": "string" }
+      }
+    }
+  }
+}

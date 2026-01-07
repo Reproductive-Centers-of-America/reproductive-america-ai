@@ -1,0 +1,22 @@
+# Node
+node_modules/
+dist/
+build/
+.npm
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+ENV/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cline/MCP
+*.jsonl
+cline_mcp_settings.json
